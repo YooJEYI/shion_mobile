@@ -1,0 +1,151 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+class Volunteer extends StatefulWidget {
+  const Volunteer({super.key});
+
+  @override
+  State<Volunteer> createState() => _VolunteerState();
+}
+
+
+class _VolunteerState extends State<Volunteer> {
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          color: Color(0xfff8f9fa),
+          margin: EdgeInsets.symmetric(vertical: 10,horizontal: 5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 60, horizontal: 30),
+                color: Colors.white,
+                child:  GestureDetector(
+                  onTap: () async {
+                    launchUrl(Uri.parse("https://xn--4s4bxgm4g1wp.com/"));
+                  },
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Icon(LineAwesomeIcons.home, size: 55, color: Colors.green),
+                        Text("시온쉼터 홈페이지",style: TextStyle(fontSize: 16),),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 60, horizontal: 22),
+                color: Colors.white,
+                child:  GestureDetector(
+                  onTap: () async {
+                    launchUrl(Uri.parse("https://www.instagram.com/zion_shelter/"));
+                  },
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Icon(LineAwesomeIcons.instagram, size: 55, color: Colors.green),
+                        Text("시온쉼터 인스타그램",style: TextStyle(fontSize: 16),),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          margin: EdgeInsets.symmetric(vertical: 10,horizontal: 5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 60, horizontal: 22),
+                color: Colors.white,
+                child:  GestureDetector(
+                  onTap: () async {
+                    launchUrl(Uri.parse("https://band.us/band/63942980/post/11853"));
+                  },
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Icon(LineAwesomeIcons.neos, size: 55, color: Colors.green),
+                        Text("시온쉼터 네이버밴드",style: TextStyle(fontSize: 16),),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 60, horizontal: 55),
+                color: Colors.white,
+                child:  GestureDetector(
+                  onTap: () async {
+                    launchUrl(Uri.parse("https://www.instagram.com/daengground/?igshid=YmMyMTA2M2Y%3D&__coig_restricted=1"));
+                  },
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Icon(LineAwesomeIcons.store, size: 55, color: Colors.green),
+                        Text("댕그라운드",style: TextStyle(fontSize: 16),),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          margin: EdgeInsets.symmetric(vertical: 10,horizontal: 5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 60, horizontal: 62),
+                color: Colors.white,
+                child:  GestureDetector(
+                  onTap: () async {
+                    launchUrl(Uri.parse("https://pf.kakao.com/_pDYlu"));
+                  },
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Icon(LineAwesomeIcons.handshake, size: 55, color: Colors.green),
+                        Text("대전 천사",style: TextStyle(fontSize: 16),),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 60, horizontal: 67),
+                color: Colors.white,
+                child:  GestureDetector(
+                  onTap: () async {
+                    launchUrl(Uri.parse('tel:01039396036'));
+                  },
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Icon(LineAwesomeIcons.phone, size: 55, color: Colors.green),
+                        Text("연락처",style: TextStyle(fontSize: 16),),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+}

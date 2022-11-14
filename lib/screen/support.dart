@@ -1,27 +1,10 @@
-import 'dart:developer';
 
-import 'package:flutter/cupertino.dart';
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-import 'package:zion_shel/main_page.dart';
-
-import 'test.dart';
-import 'video_list.dart';
-
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarColor: Colors.blueAccent,
-    ),
-  );
-  runApp(YoutubePlayerDemoApp());
-}
-
-
 
 /// Creates [YoutubePlayerDemoApp] widget.
 class YoutubePlayerDemoApp extends StatelessWidget {
@@ -46,31 +29,19 @@ class YoutubePlayerDemoApp extends StatelessWidget {
           color: Colors.blueAccent,
         ),
       ),
-      home: MyHomePage(),
+      home: SupportScreen(),
     );
   }
 }
 
-/// Homepage
-class MyHomePage extends StatefulWidget {
+class SupportScreen extends StatefulWidget {
+  const SupportScreen({super.key});
+
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<SupportScreen> createState() => SupportScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-
-  Widget _screens(int index) {
-
-    if(index == 0){
-      return MyHomePage();
-    } else if(index == 1){
-      return const Test();
-    } else {
-      return MyHomePage();
-    }
-    // MySellPostPage(),
-  
-  }
+class SupportScreenState extends State<SupportScreen>{
 
   late YoutubePlayerController _controller;
   late TextEditingController _idController;
@@ -83,8 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
   bool _isPlayerReady = false;
 
   final List<String> _ids = [
-    'RWI35ADBR_o',
-    'EKBhs9p1WeU',
+    'pm2eR0Vj09U',
   ];
 
   @override
@@ -177,169 +147,44 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       builder: (context, player) => Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: <Color> [
-                  Color(0xff207dff),
-                  Color(0xff00bd55),
-                ]
-              )
-            ),
-          ),
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 12.0),
-            child: IconButton(onPressed: () async { await launchUrl(tel); }, icon: const Icon(Icons.phone))
-          ),
-          title: const Text(
-            '시온쉼터',
-            style: TextStyle(color: Colors.white),
-          ),
-          // actions: [
-            // IconButton(
-            //   icon: const Icon(Icons.video_library),
-            //   onPressed: () => Navigator.push(
-            //     context,
-            //     CupertinoPageRoute(
-            //       builder: (context) => VideoList(),
-            //     ),
-            //   ),
-            // ),
-          // ],
-        ),
         body: Container(
-          margin: const EdgeInsets.symmetric(vertical: 20),
+          margin: const EdgeInsets.symmetric(vertical: 3),
           child: ListView(
             children: [
               player,
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _space,
-                    _text('제목', _videoMetaData.title),
-                    _space,
-                    _text('채널', _videoMetaData.author),
-                    _space,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        IconButton(
-                          icon: const Icon(Icons.skip_previous),
-                          onPressed: _isPlayerReady
-                              ? () => _controller.load(_ids[
-                          (_ids.indexOf(_controller.metadata.videoId) -
-                              1) %
-                              _ids.length])
-                              : null,
-                        ),
-                        IconButton(
-                          icon: Icon(
-                            _controller.value.isPlaying
-                                ? Icons.pause
-                                : Icons.play_arrow,
+                    Container(
+                      child: Column(
+                        children: [
+                          Text("사설 유기견 보호소 시온쉼터를 도와주세요", style: TextStyle(color: Color(0xff343a40),fontSize: 20),),
+                          Container(
+                            padding: EdgeInsets.symmetric(vertical: 60, horizontal: 30),
+                            child:  GestureDetector(
+                              onTap: () async {
+                                launchUrl(Uri.parse("https://www.ihappynanum.com/Nanum/B/B0CV58BN1L"));
+                              },
+                              child: Container(
+                                child: Column(
+                                  children: [
+                                    Icon(LineAwesomeIcons.gratipay__gittip_, size: 55, color: Colors.green),
+                                    Text("후원하기",style: TextStyle(fontSize: 16),),
+                                  ],
+                                ),
+                              ),
+                            ),
                           ),
-                          onPressed: _isPlayerReady
-                              ? () {
-                            _controller.value.isPlaying
-                                ? _controller.pause()
-                                : _controller.play();
-                            setState(() {});
-                          }
-                              : null,
-                        ),
-                        IconButton(
-                          icon: Icon(_muted ? Icons.volume_off : Icons.volume_up),
-                          onPressed: _isPlayerReady
-                              ? () {
-                            _muted
-                                ? _controller.unMute()
-                                : _controller.mute();
-                            setState(() {
-                              _muted = !_muted;
-                            });
-                          }
-                              : null,
-                        ),
-                        FullScreenButton(
-                          controller: _controller,
-                          color: Colors.blueAccent,
-                        ),
-                        IconButton(
-                          icon: const Icon(Icons.skip_next),
-                          onPressed: _isPlayerReady
-                              ? () => _controller.load(_ids[
-                          (_ids.indexOf(_controller.metadata.videoId) +
-                              1) %
-                              _ids.length])
-                              : null,
-                        ),
-                      ],
-                    ),
-                    _space,
-                    Row(
-                      children: <Widget>[
-                        const Text(
-                          "볼륨",
-                          style: TextStyle(fontWeight: FontWeight.w300),
-                        ),
-                        Expanded(
-                          child: Slider(
-                            inactiveColor: Colors.white24,
-                            value: _volume,
-                            min: 0.0,
-                            max: 100.0,
-                            divisions: 10,
-                            label: '${(_volume).round()}',
-                            onChanged: _isPlayerReady
-                                ? (value) {
-                              setState(() {
-                                _volume = value;
-                              });
-                              _controller.setVolume(_volume.round());
-                            }
-                            : null,
-                          ),
-                        ),
-                      ],
-                    ),
+                        ],
+                      )
+                    )
                   ],
                 ),
               ),
             ],
           ),
-        ),
-        bottomNavigationBar: GNav(
-          backgroundColor: Colors.black,
-          activeColor: Colors.white,
-          gap: 8,
-          tabBackgroundColor: Colors.grey.shade800,
-          padding: EdgeInsets.all(16),
-          onTabChange: (index) {
-            _screens(index);
-          },
-          tabs: const [
-            GButton(
-              icon: Icons.home,
-              text: 'Home',
-            ),
-            GButton(
-              icon: Icons.person,
-              text: 'Home',
-            ),
-            GButton(
-              icon: Icons.history_edu,
-              text: 'Home',
-            ),
-            GButton(
-              icon: Icons.home,
-              text: 'Home',
-            ),
-          ]
         ),
       ),
     );
@@ -446,4 +291,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+
+
 }

@@ -148,7 +148,7 @@ class SupportScreenState extends State<SupportScreen>{
       builder: (context, player) => Scaffold(
         resizeToAvoidBottomInset: false,
         body: Container(
-          margin: const EdgeInsets.symmetric(vertical: 3),
+          margin: const EdgeInsets.symmetric(vertical: 3,),
           child: ListView(
             children: [
               player,
@@ -158,16 +158,18 @@ class SupportScreenState extends State<SupportScreen>{
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
+                      width: double.infinity,
                       child: Column(
                         children: [
                           Text("사설 유기견 보호소 시온쉼터를 도와주세요", style: TextStyle(color: Color(0xff343a40),fontSize: 20),),
                           Container(
-                            padding: EdgeInsets.symmetric(vertical: 60, horizontal: 30),
+                            // padding: EdgeInsets.symmetric(vertical: 30),
                             child:  GestureDetector(
                               onTap: () async {
                                 launchUrl(Uri.parse("https://www.ihappynanum.com/Nanum/B/B0CV58BN1L"));
                               },
                               child: Container(
+                                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                                 child: Column(
                                   children: [
                                     Icon(LineAwesomeIcons.gratipay__gittip_, size: 55, color: Colors.green),

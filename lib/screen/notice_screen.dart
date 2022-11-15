@@ -38,9 +38,27 @@ class _NoticeScreenState extends State<NoticeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    int _count = 0;
     var db = new Mysql();
-    return Container(
+    var board = '';
 
+    void _getBoard() {
+      db.getConnection().then((conn)  {
+        String sql = 'select * from board';
+        conn.query(sql).then((result) =>{
+          for(var row in result){
+            setState(() {
+              board = row[0];
+            })
+          }
+        });
+      });
+    }
+
+    return Container(
+      child: Text(
+        '$board',
+      ),
     );
   }
 }

@@ -3,9 +3,9 @@ import 'package:mysql1/mysql1.dart';
 
 class Mysql {
   static String host = 'localhost',
-                user = 'root',
+                user = 'wpdl7899',
                 password = 'dkdla7899',
-                db = 'company';
+                db = 'wpdl7899';
   static int port = 3306;
 
 
@@ -19,6 +19,7 @@ class Mysql {
     );
     return await MySqlConnection.connect(settings);
   }
+
 
 
 }

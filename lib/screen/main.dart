@@ -60,8 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
 
   final tabs = [
-    const HomeScreen(),
     const Volunteer(),
+    const HomeScreen(),
     const SupportScreen(),
     const NoticeScreen(),
   ];
@@ -207,7 +207,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         BottomNavigationBarItem(
             icon: Icon(LineAwesomeIcons.dog),
-            label: '봉사문의'
+            label: '시온소식'
         ),
         BottomNavigationBarItem(
             icon: Icon(Icons.volunteer_activism),

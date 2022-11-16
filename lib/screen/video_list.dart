@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 /// Creates list of video players
@@ -36,7 +37,31 @@ class _VideoListState extends State<VideoList> {
 
   @override
   Widget build(BuildContext context) {
+    final tel = Uri.parse('tel:01039396036');
     return Scaffold(
+      backgroundColor: Color(0xfff8f9fa),
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: <Color> [
+                Color(0xff207dff),
+                Color(0xff00bd55),
+              ]
+            )
+          ),
+        ),
+        title: const Text(
+        '시온쉼터',
+        style: TextStyle(color: Colors.white),
+        ),
+        actions: [
+        IconButton(onPressed: () async { await launchUrl(tel); }, icon: const Icon(Icons.phone))
+      ],
+    ),
       body: ListView.separated(
         itemBuilder: (context, index) {
           return YoutubePlayer(

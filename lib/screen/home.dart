@@ -2,6 +2,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -152,7 +153,7 @@ class _HomeScreenState extends State<HomeScreen>{
       builder: (context, player) => Scaffold(
         resizeToAvoidBottomInset: false,
         body: Container(
-          margin: const EdgeInsets.symmetric(vertical: 3),
+          margin: const EdgeInsets.symmetric(vertical: 2),
           child: ListView(
             children: [
               player,

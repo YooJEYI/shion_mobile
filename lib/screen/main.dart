@@ -160,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: [
-            UserAccountsDrawerHeader(
+            const UserAccountsDrawerHeader(
               currentAccountPicture: CircleAvatar(
                 backgroundImage: AssetImage('assets/bunny.gif'),
               ),
@@ -179,7 +179,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   )),
             ),
             ListTile(
-              title: const Text('Item 1'),
+              title: Text('Item 1'),
               // onTap: () async {
               //   await Navigator.push(context,
               //       MaterialPageRoute(builder: (context) => ()) 인사말
@@ -207,15 +207,18 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         BottomNavigationBarItem(
             icon: Icon(LineAwesomeIcons.dog),
-            label: '시온소식'
+            label: '시온소식',
+            backgroundColor: Colors.black
         ),
         BottomNavigationBarItem(
             icon: Icon(Icons.volunteer_activism),
-            label: '후원하기'
+            label: '후원하기',
+            backgroundColor: Colors.black
         ),
         BottomNavigationBarItem(
             icon: Icon(LineAwesomeIcons.newspaper),
-            label: '공지사항'
+            label: '공지사항',
+            backgroundColor: Colors.black
         ),
       ],
       onTap: (index) {

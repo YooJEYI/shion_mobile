@@ -92,6 +92,7 @@ class SupportScreenState extends State<SupportScreen>{
               ),
             ),
           ],
+          childrenPadding: EdgeInsets.only(bottom: 20),
         ),
         const ExpansionTile(
           title: Text(
@@ -113,6 +114,7 @@ class SupportScreenState extends State<SupportScreen>{
               ),
             ),
           ],
+          childrenPadding: EdgeInsets.only(bottom: 20),
         ),
         const ExpansionTile(
           title: Text(
@@ -139,6 +141,7 @@ class SupportScreenState extends State<SupportScreen>{
               ),
             ),
           ],
+          childrenPadding: EdgeInsets.only(bottom: 30),
         ),
       ],
     ));

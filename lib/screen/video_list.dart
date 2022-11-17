@@ -4,8 +4,10 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 /// Creates list of video players
 class VideoList extends StatefulWidget {
+  const VideoList({super.key});
+
   @override
-  _VideoListState createState() => _VideoListState();
+  State<VideoList> createState() => _VideoListState();
 }
 
 class _VideoListState extends State<VideoList> {
@@ -39,7 +41,7 @@ class _VideoListState extends State<VideoList> {
   Widget build(BuildContext context) {
     final tel = Uri.parse('tel:01039396036');
     return Scaffold(
-      backgroundColor: Color(0xfff8f9fa),
+      backgroundColor: const Color(0xfff8f9fa),
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         flexibleSpace: Container(

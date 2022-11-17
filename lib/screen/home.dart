@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen>{
 
   late PlayerState _playerState;
   late YoutubeMetaData _videoMetaData;
-  double _volume = 100;
+  double _volume = 20;
   bool _muted = false;
   bool _isPlayerReady = false;
 

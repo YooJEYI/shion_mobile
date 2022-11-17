@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:zion_shel/screen/introduce.dart';
 import 'package:zion_shel/screen/notice_screen.dart';
 import 'package:zion_shel/screen/support.dart';
 import 'package:zion_shel/screen/video_list.dart';
@@ -90,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
       initialVideoId: _ids.first,
       flags: const YoutubePlayerFlags(
         mute: false,
-        autoPlay: true,
+        autoPlay: false,
         disableDragSeek: false,
         loop: false,
         isLive: false,
@@ -162,14 +163,9 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             const UserAccountsDrawerHeader(
               currentAccountPicture: CircleAvatar(
-                backgroundImage: AssetImage('assets/bunny.gif'),
+                backgroundImage: AssetImage('assets/images/dog1.jpg'),
               ),
-              otherAccountsPictures: [
-                CircleAvatar(
-                  backgroundImage: AssetImage('assets/profile.png'),
-                )
-              ],
-              accountEmail: Text('dev.yakkuza@gmail.com'),
+              accountEmail: Text('01039582627a@gmail.com'),
               accountName: Text('시온쉼터'),
               decoration: BoxDecoration(
                   color: Color(0xff00bd55),
@@ -179,12 +175,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   )),
             ),
             ListTile(
-              title: Text('Item 1'),
-              // onTap: () async {
-              //   await Navigator.push(context,
-              //       MaterialPageRoute(builder: (context) => ()) 인사말
-              //   );
-              // },
+              title: const Text('인사말'),
+              onTap: () async {
+                await Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Introduce())
+                );
+              },
             ),
             ListTile(
               title: const Text('시온쉼터 영상모음'),
@@ -229,7 +225,6 @@ class _MyHomePageState extends State<MyHomePage> {
       currentIndex: _currentIndex,
     ),
     );
-
   }
 
 

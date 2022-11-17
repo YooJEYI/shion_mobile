@@ -42,17 +42,17 @@ class _VolunteerState extends State<Volunteer> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 60, horizontal: 22),
+                  padding: EdgeInsets.symmetric(vertical: 60, horizontal: 62),
                   color: Colors.white,
                   child:  GestureDetector(
                     onTap: () async {
-                      launchUrl(Uri.parse("https://www.instagram.com/zion_shelter/"));
+                      launchUrl(Uri.parse("https://docs.google.com/forms/d/e/1FAIpQLSdxtkrRJFQXNyCXTYYRRsHoBci1G_2UID2LVCYFFakgIEEejA/viewform"));
                     },
                     child: Container(
                       child: Column(
                         children: [
-                          Icon(LineAwesomeIcons.instagram, size: 55, color: Colors.green),
-                          Text("시온쉼터 인스타그램",style: TextStyle(fontSize: 16),),
+                          Icon(LineAwesomeIcons.dog, size: 55, color: Colors.green),
+                          Text("입양하기",style: TextStyle(fontSize: 16),),
                         ],
                       ),
                     ),
@@ -84,17 +84,17 @@ class _VolunteerState extends State<Volunteer> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 60, horizontal: 55),
+                  padding: EdgeInsets.symmetric(vertical: 60, horizontal: 22),
                   color: Colors.white,
                   child:  GestureDetector(
                     onTap: () async {
-                      launchUrl(Uri.parse("https://www.instagram.com/daengground/?igshid=YmMyMTA2M2Y%3D&__coig_restricted=1"));
+                      launchUrl(Uri.parse("https://www.instagram.com/zion_shelter/"));
                     },
                     child: Container(
                       child: Column(
                         children: [
-                          Icon(LineAwesomeIcons.store, size: 55, color: Colors.green),
-                          Text("댕그라운드",style: TextStyle(fontSize: 16),),
+                          Icon(LineAwesomeIcons.instagram, size: 55, color: Colors.green),
+                          Text("시온쉼터 인스타그램",style: TextStyle(fontSize: 16),),
                         ],
                       ),
                     ),
@@ -126,17 +126,17 @@ class _VolunteerState extends State<Volunteer> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 60, horizontal: 67),
+                  padding: EdgeInsets.symmetric(vertical: 60, horizontal: 55),
                   color: Colors.white,
                   child:  GestureDetector(
                     onTap: () async {
-                      launchUrl(Uri.parse('tel:01039396036'));
+                      launchUrl(Uri.parse("https://www.instagram.com/daengground/?igshid=YmMyMTA2M2Y%3D&__coig_restricted=1"));
                     },
                     child: Container(
                       child: Column(
                         children: [
-                          Icon(LineAwesomeIcons.phone, size: 55, color: Colors.green),
-                          Text("연락처",style: TextStyle(fontSize: 16),),
+                          Icon(LineAwesomeIcons.store, size: 55, color: Colors.green),
+                          Text("댕그라운드",style: TextStyle(fontSize: 16),),
                         ],
                       ),
                     ),

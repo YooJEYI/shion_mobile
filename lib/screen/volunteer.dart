@@ -18,7 +18,7 @@ class _VolunteerState extends State<Volunteer> {
       scrollDirection: Axis.vertical,
       child: Column(
         children: [
-          Container( //scroll로 바꿔야 할듯 폰마다 크기 달라져서 깨짐
+          Container(
             color: Color(0xfff8f9fa),
             margin: EdgeInsets.symmetric(vertical: 10,horizontal: 5),
             child: Row(
@@ -33,7 +33,7 @@ class _VolunteerState extends State<Volunteer> {
                     },
                     child: Container(
                       child: Column(
-                        children: [
+                        children: const [
                           Icon(LineAwesomeIcons.home, size: 55, color: Colors.green),
                           Text("시온쉼터 홈페이지",style: TextStyle(fontSize: 16),),
                         ],
@@ -48,13 +48,11 @@ class _VolunteerState extends State<Volunteer> {
                     onTap: () async {
                       launchUrl(Uri.parse("https://docs.google.com/forms/d/e/1FAIpQLSdxtkrRJFQXNyCXTYYRRsHoBci1G_2UID2LVCYFFakgIEEejA/viewform"));
                     },
-                    child: Container(
-                      child: Column(
-                        children: [
-                          Icon(LineAwesomeIcons.dog, size: 55, color: Colors.green),
-                          Text("입양하기",style: TextStyle(fontSize: 16),),
-                        ],
-                      ),
+                    child: Column(
+                      children: const[
+                         Icon(LineAwesomeIcons.dog, size: 55, color: Colors.green),
+                         Text("입양하기",style: TextStyle(fontSize: 16),),
+                      ],
                     ),
                   ),
                 ),

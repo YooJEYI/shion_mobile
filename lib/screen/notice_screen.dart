@@ -2,8 +2,14 @@
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:mysql1/mysql1.dart';
 import 'package:zion_shel/model/notice_info.dart';
+import 'package:zion_shel/model/notice_widget.dart';
 import 'package:zion_shel/mysql.dart';
+import 'package:zion_shel/restclient.dart';
+import '../common_style.dart';
+import 'package:zion_shel/provider/notice_provider.dart';
+import 'package:dio/dio.dart';
 
 class NoticeScreen extends StatefulWidget {
   const NoticeScreen({Key? key}) : super(key: key);
@@ -14,17 +20,6 @@ class NoticeScreen extends StatefulWidget {
 }
 
 class _NoticeScreenState extends State<NoticeScreen> {
-  // final _pageSize = InfiniteScrollPageConstant.pageSize;
-  // final PagingController<int, NoticeInfo> _pagingController =
-  // PagingController(firstPageKey: 1, invisibleItemsThreshold: 1);
-  //
-  // @override
-  // void initState() {
-  //   _pagingController.addPageRequestListener((pageKey) {
-  //     _fetchPage(pageKey);
-  //   });
-  //   super.initState();
-  // }
 
   Future<void> _fetchPage(int pageKey) async {
     await Future.delayed(const Duration(milliseconds: 100));
@@ -38,27 +33,88 @@ class _NoticeScreenState extends State<NoticeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    int _count = 0;
-    var db = new Mysql();
-    var board = '';
 
-    void _getBoard() {
-      db.getConnection().then((conn)  {
-        String sql = 'select * from board';
-        conn.query(sql).then((result) =>{
-          for(var row in result){
-            setState(() {
-              board = row[0];
-            })
-          }
-        });
+    RestClient client;
+
+    @override
+    void initState(){
+      super.initState();
+
+      Dio dio = Dio();
+
+      Future.microtask(() async {
+        final resp = await client.getNoticeList();
+
+        print(resp);
       });
     }
 
-    return Container(
-      child: Text(
-        '$board',
-      ),
+
+
+
+    return Column(
+      children: [
+        Flexible(
+          flex: 1,
+          child: TextField(
+            cursorColor: Colors.grey,
+            decoration: InputDecoration(
+                fillColor: Colors.white,
+                filled: true,
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide.none
+                ),
+                hintText: 'Search',
+                hintStyle: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 18
+                ),
+                prefixIcon: Icon(LineAwesomeIcons.search)
+            ),
+          ),
+        ),
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: 11, vertical: 11),
+          child: Row(
+            children: [
+              Text("공지목록", style: TextStyle(color: Color(0xff23343B),fontSize: 15, fontWeight: FontWeight.bold),),
+              Expanded(
+                child: Container(
+                  margin: EdgeInsets.only(top: 13),
+                  width: double.infinity,
+                  height: 1,
+                  color: const Color(0xffD5D5D5),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 11, vertical: 5),
+          alignment: Alignment.topLeft,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.grey.shade400,
+              width: 1,
+            ),
+            borderRadius: BorderRadius.circular(5)
+          ),
+          child:
+
+            Container(
+            margin: EdgeInsets.only(left: 10,top: 12, bottom: 12, right: 30),
+            child :Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("시온쉼터 와디즈 펀딩 성공 진심으로 감사 드립니다.", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xff223539)),),
+              Text("2022-11-10", style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: Color(0xff275888C)))
+            ],
+            )
+          )
+        ),
+      ],
     );
   }
 }

@@ -10,6 +10,7 @@ import 'package:zion_shel/screen/support.dart';
 import 'package:zion_shel/screen/video_list.dart';
 import 'home.dart';
 import '../screen/volunteer.dart';
+import 'package:mailto/mailto.dart';
 
 
 void main() {
@@ -132,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     final tel = Uri.parse('tel:01039396036');
     return Scaffold(
-      backgroundColor: Color(0xfff8f9fa),
+      backgroundColor: const Color(0xfff8f9fa),
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         flexibleSpace: Container(
@@ -161,11 +162,23 @@ class _MyHomePageState extends State<MyHomePage> {
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: [
-            const UserAccountsDrawerHeader(
-              currentAccountPicture: CircleAvatar(
+             UserAccountsDrawerHeader(
+              currentAccountPicture: const CircleAvatar(
                 backgroundImage: AssetImage('assets/images/dog1.jpg'),
               ),
-              accountEmail: Text('01039582627a@gmail.com'),
+              accountEmail:Container(
+                margin: const EdgeInsets.only(left: 45),
+                child: TextButton(
+                onPressed: () async {
+                  const url = 'mailto:01039582627a@gmail.com';
+                  if (await launchUrl(Uri.parse(url))) {
+                    await canLaunchUrl(Uri.parse(url));
+                  } else {
+                    throw 'Could not launch $url';
+                  }
+                },
+                child: Text('01039582627a@gmail.com', style: TextStyle(color: Colors.white),)
+              )),
               accountName: Text('시온쉼터'),
               decoration: BoxDecoration(
                   color: Color(0xff00bd55),

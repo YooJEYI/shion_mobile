@@ -42,15 +42,14 @@ class _NoticeScreenState extends State<NoticeScreen> {
 
       Dio dio = Dio();
 
+      client = RestClient(dio);
+
       Future.microtask(() async {
         final resp = await client.getNoticeList();
 
-        print(resp);
+        print("$resp");
       });
     }
-
-
-
 
     return Column(
       children: [

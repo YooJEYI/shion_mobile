@@ -1,120 +1,59 @@
-// import 'package:bywind_mobile/providers/community/notice_provider.dart';
-// import 'package:bywind_mobile/styles/common_style.dart';
-// import 'package:bywind_mobile/styles/community_style.dart';
-// import 'package:bywind_mobile/utils/community_util.dart';
-// import 'package:bywind_mobile/widgets/common/badge.dart';
-// import 'package:bywind_mobile/widgets/common/common_content_container.dart';
-// import 'package:bywind_mobile/widgets/common/detail_file_link_list.dart';
-// import 'package:bywind_mobile/widgets/main/main_scaffold.dart';
-// import 'package:easy_localization/easy_localization.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_riverpod/flutter_riverpod.dart';
-//
-// class NoticeDetailScreen extends ConsumerStatefulWidget {
-//   const NoticeDetailScreen({super.key});
-//
-//   @override
-//   ConsumerState<ConsumerStatefulWidget> createState() => _NoticeDetailScreenState();
-// }
-//
-// class _NoticeDetailScreenState extends ConsumerState<NoticeDetailScreen> {
-//   final _scrollController = ScrollController();
-//
-//   @override
-//   void dispose() {
-//     super.dispose();
-//     _scrollController.dispose();
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     final detail = ref.watch(noticeDetailProvider);
-//
-//     return MainScaffold(
-//       appBarBottomLineVisible: false,
-//       background: Colors.white,
-//       body: SingleChildScrollView(
-//         controller: _scrollController,
-//         child: CommonContentContainer(
-//           expanded: false,
-//           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-//           child: Column(
-//             children: [
-//               RichText(
-//                 text: TextSpan(
-//                   style: CommunityStyle.detailHeaderTextStyle,
-//                   children: [
-//                     WidgetSpan(
-//                       child: FittedBox(
-//                         fit: BoxFit.fitWidth,
-//                         child: Badge.bigBadgeCircle (
-//                           backgroundColor: CommunityUtil.noticeClsToColor(detail.cls),
-//                           text: CommunityUtil.noticeClsToString(detail.cls),
-//                         ),
-//                       )
-//                     ),
-//                     const WidgetSpan(child: SizedBox(width: 5)),
-//                     TextSpan(text: detail.noticeTitle??'')
-//                   ]
-//                 ),
-//               ),
-//               const SizedBox(height: 10),
-//               Row(
-//                 mainAxisAlignment: MainAxisAlignment.center,
-//                 children: [
-//                   Text(
-//                     detail.companyNm??'',
-//                     style: CommunityStyle.detailWriterTextStyle
-//                   ),
-//                   Container(
-//                     margin: const EdgeInsets.symmetric(horizontal: 6),
-//                     child: const Text('|', style: CommonStyle.subtitlePipeTextStyle)
-//                   ),
-//                   Text(
-//                     detail.insDt??'',
-//                     style: CommunityStyle.detailSubTextStyle
-//                   )
-//                 ],
-//               ),
-//               const SizedBox(height: 15),
-//               Container(
-//                 height: 1,
-//                 width: double.infinity,
-//                 color: const Color(0xffEAEAF2)
-//               ),
-//               const SizedBox(height: 30),
-//               Container(
-//                 constraints: const BoxConstraints(minHeight: 50),
-//                 child: Align(
-//                   alignment: Alignment.topLeft,
-//                   child: Text(
-//                     detail.content??'',
-//                     style: CommunityStyle.detailBodyTextStyle
-//                   )
-//                 )
-//               ),
-//               const SizedBox(height: 50),
-//               Container(
-//                   height: 1,
-//                   width: double.infinity,
-//                   color: const Color(0xffEAEAF2)
-//               ),
-//               Column(
-//                 children: [
-//                   Container(
-//                     alignment: Alignment.centerLeft,
-//                     margin: const EdgeInsets.only(top: 25,bottom: 6),
-//                     child: Text('common.attachedFile'.tr(),
-//                       style: CommunityStyle.subHeaderTextStyle
-//                     )
-//                   ),
-//                   DetailFileLinkList(fileInfoList:detail?.fileList??[])
-//                 ]
-//               )
-//             ]
-//           )
-//         )
-//       )
-//     );
-//   }
-// }
+import 'package:flutter/material.dart';
+
+class NoticeDetailScreen extends StatefulWidget {
+  const NoticeDetailScreen({super.key});
+
+  @override
+  State<StatefulWidget> createState() => _NoticeDetailScreenState();
+}
+
+class _NoticeDetailScreenState extends State<NoticeDetailScreen> {
+  final _scrollController = ScrollController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    _scrollController.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+      controller: _scrollController,
+        child: Container(
+          margin: EdgeInsets.symmetric(vertical: 33,horizontal: 35),
+          child: Column(
+            children: [
+              Text('와디즈 펀딩 참여해주셔서 감사 드립니다.', style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 13,horizontal: 88),
+                child: Text('시온쉼터 |  2022-11-23'),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 13, bottom: 25),
+                width: double.infinity,
+                height: 1,
+                color: const Color(0xffD5D5D5),
+              ),
+              Container(
+                alignment: Alignment.centerLeft,
+                child: Text('ssdsdsd'),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 50, bottom: 25),
+                width: double.infinity,
+                height: 1,
+                color: const Color(0xffD5D5D5),
+              ),
+              Container(
+                alignment: Alignment.centerLeft,
+                child: Text('첨부파일'),
+              ),
+            ],
+          ),
+        )
+      )
+    );
+  }
+}

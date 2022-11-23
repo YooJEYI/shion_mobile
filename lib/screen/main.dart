@@ -5,6 +5,7 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:zion_shel/screen/introduce.dart';
+import 'package:zion_shel/screen/notice_detail_screen.dart';
 import 'package:zion_shel/screen/notice_screen.dart';
 import 'package:zion_shel/screen/support.dart';
 import 'package:zion_shel/screen/video_list.dart';

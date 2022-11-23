@@ -1,6 +1,8 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+part 'notice_detail_info.g.dart';
+
 @JsonSerializable()
 class NoticeDetailInfo {
   NoticeDetailInfo( {

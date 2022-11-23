@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class NoticeDetailScreen extends StatefulWidget {
   const NoticeDetailScreen({super.key});
@@ -50,6 +51,38 @@ class _NoticeDetailScreenState extends State<NoticeDetailScreen> {
                 alignment: Alignment.centerLeft,
                 child: Text('첨부파일'),
               ),
+              Column(
+                children: [
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    margin: const EdgeInsets.only(top: 25,bottom: 6),
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+                      color: Color(0xffF2F3F5),
+                      child: Expanded(
+                        child: Row(
+                          children: [
+                            Icon(LineAwesomeIcons.file),
+                            SizedBox(width: 4,),
+                            Text(
+                              '2022년 11월 후원자 모음.pdf',
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xff23343B),
+                                letterSpacing: -0.7
+                              ),
+                            ),
+                            SizedBox(width: 95,),
+                            Icon(LineAwesomeIcons.download),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  // DetailFileLinkList(fileInfoList:detail?.fileList??[])
+                ]
+              )
             ],
           ),
         )

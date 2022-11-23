@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
     const Volunteer(),
     const HomeScreen(),
     const SupportScreen(),
-    const NoticeScreen(),
+    const NoticeDetailScreen(),
   ];
 
   late YoutubePlayerController _controller;

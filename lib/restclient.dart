@@ -6,7 +6,7 @@ import 'package:zion_shel/model/notice_detail_info.dart';
 import 'package:zion_shel/model/notice_info.dart';
 part 'restclient.g.dart';
 
-@RestApi(baseUrl:'jdbc:mariadb://wpdl7899.cafe24.com:3306/wpdl7899')
+@RestApi(baseUrl:'https://xn--4s4bxgm4g1wp.com')
 abstract class RestClient {
   factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
 

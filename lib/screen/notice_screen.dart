@@ -21,6 +21,22 @@ class NoticeScreen extends StatefulWidget {
 
 class _NoticeScreenState extends State<NoticeScreen> {
 
+  late RestClient client;
+
+  @override
+  void initState(){
+    super.initState();
+    Dio dio = Dio();
+
+    client = RestClient(dio);
+
+    Future.microtask(() async {
+      final resp = await client.getNoticeList();
+
+      print(resp.toString());
+    });
+  }
+
   Future<void> _fetchPage(int pageKey) async {
     await Future.delayed(const Duration(milliseconds: 100));
   }
@@ -33,23 +49,6 @@ class _NoticeScreenState extends State<NoticeScreen> {
 
   @override
   Widget build(BuildContext context) {
-
-    RestClient client;
-
-    @override
-    void initState(){
-      super.initState();
-
-      Dio dio = Dio();
-
-      client = RestClient(dio);
-
-      Future.microtask(() async {
-        final resp = await client.getNoticeList();
-
-        print("$resp");
-      });
-    }
 
     return Column(
       children: [

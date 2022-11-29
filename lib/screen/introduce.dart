@@ -54,7 +54,7 @@ class _IntroduceState extends State<Introduce>{
                           margin: EdgeInsets.only(top: 5,bottom: 20),
                           child: Column(
                             children: [
-                              Text(style: TextStyle(fontSize: 20, fontFamily: 'Gothic A1',letterSpacing: -0.7, fontWeight: FontWeight.w500 ),'안녕하세요 시온쉼터 소장 오은숙 입니다.\n\n사람과 동물이 함께 행복한 세상을 꿈꾸는 시온쉼터는 개농장의 개들, 방치, 학대, 유기등 고통스런 삶을 살다 구조된 개 길 고양이 급식소의 고양이들을 케어 입양보내 행복한 삶을 찾아 주기 위해 오늘도 소명을 감당하고 있으며 시민의 자발적인 후원과 봉사로 운영됩니다.')
+                              Text(style: TextStyle(fontSize: 18, fontFamily: 'Gothic A1',letterSpacing: -0.5, fontWeight: FontWeight.w600 ),'안녕하세요 시온쉼터 소장 오은숙 입니다.\n\n사람과 동물이 함께 행복한 세상을 꿈꾸는 시온쉼터는 개농장의 개들, 방치, 학대, 유기등 고통스런 삶을 살다 구조된 개 길 고양이 급식소의 고양이들을 케어 입양보내 행복한 삶을 찾아 주기 위해 오늘도 소명을 감당하고 있으며 시민의 자발적인 후원과 봉사로 운영됩니다.')
                             ],
                           ),
                         )

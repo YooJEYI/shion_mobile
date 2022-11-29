@@ -7,6 +7,7 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:zion_shel/screen/introduce.dart';
 import 'package:zion_shel/screen/notice_detail_screen.dart';
 import 'package:zion_shel/screen/notice_screen.dart';
+import 'package:zion_shel/screen/star_list.dart';
 import 'package:zion_shel/screen/support.dart';
 import 'package:zion_shel/screen/video_list.dart';
 import 'home.dart';
@@ -66,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
     const Volunteer(),
     const HomeScreen(),
     const SupportScreen(),
-    const NoticeDetailScreen(),
+    const NoticeScreen(),
   ];
 
   late YoutubePlayerController _controller;
@@ -178,10 +179,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     throw 'Could not launch $url';
                   }
                 },
-                child: Text('01039582627a@gmail.com', style: TextStyle(color: Colors.white),)
+                child: const Text('01039582627a@gmail.com', style: TextStyle(color: Colors.white),)
               )),
-              accountName: Text('시온쉼터'),
-              decoration: BoxDecoration(
+              accountName: Container(
+                margin: const EdgeInsets.only(left: 8),
+                child: const Text('시온쉼터')
+              ),
+              decoration: const BoxDecoration(
                   color: Color(0xff00bd55),
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(40),
@@ -193,6 +197,14 @@ class _MyHomePageState extends State<MyHomePage> {
               onTap: () async {
                 await Navigator.push(context,
                     MaterialPageRoute(builder: (context) => const Introduce())
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('스타·팬클럽후원'),
+              onTap: () async {
+                await Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const StarList())
                 );
               },
             ),

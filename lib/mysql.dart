@@ -11,13 +11,9 @@ class Mysql {
   Mysql();
 
   Future<MySqlConnection> getConnection() async {
-
     var settings = new ConnectionSettings(
-
-        host: host, port: port, user: user, password: password, db: db);
-
+      host: host, port: port, user: user, password: password, db: db);
     return await MySqlConnection.connect(settings);
-
   }
 
 }
@@ -31,19 +27,12 @@ Future main() async {
       db: 'testdb',
       password: 'dkdla7899'));
 
-  // Create a table
-  await conn.query(
-      'CREATE TABLE users (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, name varchar(255), email varchar(255), age int)');
-
   var results = await conn.query('select * from users');
 
   print(results.length);
   for (var row in results) {
     print('id: ${row[0]}, email: ${row[1]}');
   }
-
-  // Finally, close the connection
-  await conn.close();
 
   // Finally, close the connection
   await conn.close();

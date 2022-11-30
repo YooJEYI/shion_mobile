@@ -14,6 +14,8 @@ import 'home.dart';
 import '../screen/volunteer.dart';
 import 'package:mailto/mailto.dart';
 
+import 'splash.dart';
+
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -48,7 +50,10 @@ class YoutubePlayerDemoApp extends StatelessWidget {
           color: Colors.blueAccent,
         ),
       ),
-      home: MyHomePage(),
+      routes: {
+        '/':(context) => Splash(),
+        '/home' : (context) => MyHomePage()
+      },
     );
   }
 }
@@ -134,124 +139,141 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final tel = Uri.parse('tel:01039396036');
-    return Scaffold(
-      backgroundColor: const Color(0xfff8f9fa),
-      resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
+    return WillPopScope(
+      onWillPop: () => _asyncConfirmDialog(context),
+      child: Scaffold(
+        backgroundColor: const Color(0xfff8f9fa),
+        resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: <Color> [
-                    Color(0xff207dff),
-                    Color(0xff00bd55),
-                  ]
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: <Color> [
+                  Color(0xff207dff),
+                  Color(0xff00bd55),
+                ]
               )
+            ),
           ),
-        ),
-        title: const Text(
-          '시온쉼터',
-          style: TextStyle(color: Colors.white),
-        ),
-        actions: [
-          IconButton(onPressed: () async { await launchUrl(tel); }, icon: const Icon(Icons.phone))
-        ],
-      ),
-      body: tabs[_currentIndex],
-      drawer: Drawer(
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: [
-             UserAccountsDrawerHeader(
-              currentAccountPicture: const CircleAvatar(
-                backgroundImage: AssetImage('assets/images/dog1.jpg'),
-              ),
-              accountEmail:Container(
-                margin: const EdgeInsets.only(left: 45),
-                child: TextButton(
-                onPressed: () async {
-                  const url = 'mailto:01039582627a@gmail.com';
-                  if (await launchUrl(Uri.parse(url))) {
-                    await canLaunchUrl(Uri.parse(url));
-                  } else {
-                    throw 'Could not launch $url';
-                  }
-                },
-                child: const Text('01039582627a@gmail.com', style: TextStyle(color: Colors.white),)
-              )),
-              accountName: Container(
-                margin: const EdgeInsets.only(left: 8),
-                child: const Text('시온쉼터')
-              ),
-              decoration: const BoxDecoration(
-                  color: Color(0xff00bd55),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(40),
-                    bottomRight: Radius.circular(40),
-                  )),
-            ),
-            ListTile(
-              title: const Text('인사말'),
-              onTap: () async {
-                await Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Introduce())
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('스타·팬클럽후원'),
-              onTap: () async {
-                await Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const StarList())
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('시온쉼터 영상모음'),
-              onTap: () async {
-                await Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => VideoList())
-                );
-              },
-            ),
+          title: const Text(
+            '시온쉼터',
+            style: TextStyle(color: Colors.white),
+          ),
+          actions: [
+            IconButton(onPressed: () async { await launchUrl(tel); }, icon: const Icon(Icons.phone))
           ],
         ),
+        body: tabs[_currentIndex],
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              UserAccountsDrawerHeader(
+                currentAccountPicture: const CircleAvatar(backgroundImage: AssetImage('assets/images/dog1.jpg'),),
+                accountEmail:Container(
+                  margin: const EdgeInsets.only(left: 45),
+                  child: TextButton(
+                  onPressed: () async {
+                    const url = 'mailto:01039582627a@gmail.com';
+                    if (await launchUrl(Uri.parse(url))) {
+                      await canLaunchUrl(Uri.parse(url));
+                    } else {
+                      throw 'Could not launch $url';
+                    }
+                  },
+                  child: const Text('01039582627a@gmail.com', style: TextStyle(color: Colors.white),)
+                  )
+                ),
+                accountName: Container(
+                  margin: const EdgeInsets.only(left: 8),
+                  child: const Text('시온쉼터')
+                ),
+                decoration: const BoxDecoration(
+                    color: Color(0xff00bd55),
+                    borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(40),
+                    bottomRight: Radius.circular(40),
+                  )
+                ),
+              ),
+              ListTile(
+                title: const Text('인사말'),
+                onTap: () async {
+                  await Navigator.push(context,MaterialPageRoute(builder: (context) => const Introduce()));
+                },
+              ),
+              ListTile(
+                title: const Text('스타·팬클럽후원'),
+                onTap: () async {
+                  await Navigator.push(context,MaterialPageRoute(builder: (context) => const StarList()));
+                },
+              ),
+              ListTile(
+                title: const Text('시온쉼터 영상모음'),
+                onTap: () async {
+                  await Navigator.push(context, MaterialPageRoute(builder: (context) => VideoList()));
+                },
+              ),
+            ],
+          ),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.black,
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(LineAwesomeIcons.home),
+              label: '홈',
+              backgroundColor: Colors.black
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(LineAwesomeIcons.dog),
+              label: '시온소식',
+              backgroundColor: Colors.black
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.volunteer_activism),
+              label: '후원하기',
+              backgroundColor: Colors.black
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(LineAwesomeIcons.newspaper),
+              label: '공지사항',
+              backgroundColor: Colors.black
+          ),
+        ],
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        currentIndex: _currentIndex,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-      backgroundColor: Colors.black,
-      items: [
-        BottomNavigationBarItem(
-            icon: Icon(LineAwesomeIcons.home),
-            label: '홈',
-            backgroundColor: Colors.black
-        ),
-        BottomNavigationBarItem(
-            icon: Icon(LineAwesomeIcons.dog),
-            label: '시온소식',
-            backgroundColor: Colors.black
-        ),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.volunteer_activism),
-            label: '후원하기',
-            backgroundColor: Colors.black
-        ),
-        BottomNavigationBarItem(
-            icon: Icon(LineAwesomeIcons.newspaper),
-            label: '공지사항',
-            backgroundColor: Colors.black
-        ),
-      ],
-      onTap: (index) {
-        setState(() {
-          _currentIndex = index;
-        });
-      },
-      currentIndex: _currentIndex,
-    ),
+      )
     );
   }
+}
 
-
+Future<bool> _asyncConfirmDialog(BuildContext context) async {
+  bool exitAPP = await showDialog(
+    context: context,
+    builder: (BuildContext context){
+      return AlertDialog(
+        title: const Text('나가기'),
+        content: const Text('오늘도 시온쉼터를 사랑해 주셔서 감사합니다.'),
+        actions: [
+          TextButton(
+            onPressed: (){ Navigator.of(context).pop(false);},
+            child: const Text("아니요"),
+          ),
+          TextButton(
+            onPressed: (){Navigator.of(context).pop(true);},
+            child: const Text("네"),
+          ),
+        ],
+      );
+    }
+  );
+  return exitAPP ?? false;
 }

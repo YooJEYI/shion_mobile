@@ -11,25 +11,76 @@ class StarList extends StatefulWidget {
 }
 
 List<String> starListImage = [
-  "assets/images/dog.jpg",
-  "assets/images/dog1.jpg",
-  "assets/images/sojang.jpg",
+  "assets/images/hj.jpg",
+  "assets/images/nam.jpg",
+  "assets/images/kimmiso.jpg",
+  "assets/images/lee.jpg",
+  "assets/images/wonho.jpg",
+  "assets/images/jinwha.jpg",
+  "assets/images/pilsoon.jpg",
+  "assets/images/hyobum.jpg",
+  "assets/images/lina.jpg",
+  "assets/images/goean.jpg",
+  "assets/images/yeonbok.jpg",
+  "assets/images/hanboream.jpg",
+  "assets/images/song2.jpg",
+  "assets/images/doyoon.jpg",
+  "assets/images/doong.jpg",
 ];
 
 List<String> starListName = [
-  "aaa",
-  "vvs",
-  "wqeqwewqeqw",
+  "전혜진",
+  "남형도",
+  "김미소",
+  "이웅종",
+  "김원효",
+  "심진화",
+  "장필순",
+  "신효범",
+  "채리나",
+  "고은성",
+  "이연복",
+  "한보름",
+  "한송이",
+  "윤도운",
+  "동글개봉사단",
 ];
 
 
 List<String> starListJob = [
-  "111",
-  "22222222",
-  "33333",
+  "미스코리아,배우",
+  "머니투데이 기자",
+  "아나운서",
+  "원조 견통령, 대학교수",
+  "개그맨",
+  "개그우먼",
+  "가수",
+  "가수",
+  "가수",
+  "뮤지컬배우",
+  "쉐프",
+  "배우",
+  "대전KGC인삼공사 배구선수",
+  "데이식스 드러머",
+  "이웅종 단장 봉사팀",
 ];
 
-
+List<String> instagramUrl = [
+  "https://www.instagram.com/hyejin_jun/",
+  "https://www.instagram.com/love_ddolggom/",
+  "https://www.instagram.com/ms__4343/",
+  "https://www.instagram.com/ungjongi/",
+  "https://www.instagram.com/wonhyo0925/",
+  "https://www.instagram.com/shimjinhwa/",
+  "https://www.instagram.com/jejusoony/",
+  "https://www.instagram.com/hyobumshin/",
+  "https://www.instagram.com/rina_sister/",
+  "https://www.instagram.com/musical.ko/",
+  "https://www.instagram.com/fuxtom/",
+  "https://www.instagram.com/han_bling_/",
+  "https://www.instagram.com/ssongr12/",
+  "https://www.instagram.com/d.ddablue/",
+];
 
 class StarListState extends State<StarList>{
 
@@ -62,12 +113,16 @@ class StarListState extends State<StarList>{
       body: Container(
         color: Colors.grey.shade200,
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 40),
           margin: const EdgeInsets.symmetric(vertical: 20),
           child: ListView.builder(
             itemCount: starListImage.length,
             itemBuilder: (BuildContext context, int index) {
-              return  Container(
+              return GestureDetector(
+                onTap: () async {
+                  launchUrl(Uri.parse(instagramUrl[index]));
+                },
+                child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(5.0)),
                   border: Border.all(color: Colors.white)
@@ -78,13 +133,20 @@ class StarListState extends State<StarList>{
                   color: Colors.white,
                   child: Column(
                     children: [
-                      Image(image: AssetImage(starListImage[index]),width: double.infinity),
-                      Text(starListImage[index], style: const TextStyle(fontSize: 21, fontWeight: FontWeight.bold),),
-                      Text(starListJob[index],style: const TextStyle(fontSize: 16, color: Color(0xff00bd56)),)
+                      Image(image: AssetImage(starListImage[index])),
+                      Container(
+                        margin: EdgeInsets.symmetric(vertical: 20),
+                        child: Column(
+                          children: [
+                            Text(starListName[index], style: const TextStyle(fontSize: 21, fontWeight: FontWeight.bold),),
+                            Text(starListJob[index],style: const TextStyle(fontSize: 16, color: Color(0xff00bd56)),)
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 ),
-              );
+              ));
             }
           ),
         ),
@@ -92,4 +154,6 @@ class StarListState extends State<StarList>{
     );
   }
 }
+
+
 

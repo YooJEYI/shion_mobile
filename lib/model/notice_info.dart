@@ -11,8 +11,8 @@ class NoticeInfo {
     this.rnum
   });
 
-  final String? rnum;
-  final String? boardId;
+  final int? rnum;
+  final int? boardId;
   final String? boardTitle;
   final String? createDate;
 

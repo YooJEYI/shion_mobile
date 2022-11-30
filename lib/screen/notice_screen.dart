@@ -5,7 +5,6 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:mysql1/mysql1.dart';
 import 'package:zion_shel/model/notice_info.dart';
 import 'package:zion_shel/model/notice_widget.dart';
-import 'package:zion_shel/mysql.dart';
 import 'package:zion_shel/restclient.dart';
 import '../common_style.dart';
 import 'package:zion_shel/provider/notice_provider.dart';

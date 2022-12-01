@@ -40,7 +40,7 @@ class _IntroduceState extends State<Introduce>{
         child: Column(
           children: [
             Container(
-              child: const Image(image: AssetImage("assets/images/sojang.jpg"),),
+              child: const Image(image: AssetImage("assets/images/sojang.png"),),
             ),
             Container(
               margin: EdgeInsets.only(top: 10,left: 10, right: 10),

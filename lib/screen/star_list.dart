@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -11,21 +9,21 @@ class StarList extends StatefulWidget {
 }
 
 List<String> starListImage = [
-  "assets/images/hj.jpg",
-  "assets/images/nam.jpg",
-  "assets/images/kimmiso.jpg",
-  "assets/images/lee.jpg",
-  "assets/images/wonho.jpg",
-  "assets/images/jinwha.jpg",
-  "assets/images/pilsoon.jpg",
-  "assets/images/hyobum.jpg",
-  "assets/images/lina.jpg",
-  "assets/images/goean.jpg",
-  "assets/images/yeonbok.jpg",
-  "assets/images/hanboream.jpg",
-  "assets/images/song2.jpg",
-  "assets/images/doyoon.jpg",
-  "assets/images/doong.jpg",
+  "assets/images/hj.png",
+  "assets/images/nam.png",
+  "assets/images/kimmiso.png",
+  "assets/images/lee.png",
+  "assets/images/wonho.png",
+  "assets/images/jinwha.png",
+  "assets/images/pilsoon.png",
+  "assets/images/hyobum.png",
+  "assets/images/lina.png",
+  "assets/images/goean.png",
+  "assets/images/yeonbok.png",
+  "assets/images/hanboream.png",
+  "assets/images/song2.png",
+  "assets/images/doyoon.png",
+  "assets/images/doong.png",
 ];
 
 List<String> starListName = [
@@ -45,7 +43,6 @@ List<String> starListName = [
   "윤도운",
   "동글개봉사단",
 ];
-
 
 List<String> starListJob = [
   "미스코리아,배우",
@@ -92,14 +89,14 @@ class StarListState extends State<StarList>{
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: <Color> [
-                    Color(0xff207dff),
-                    Color(0xff00bd55),
-                  ]
-              )
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: <Color> [
+                Color(0xff207dff),
+                Color(0xff00bd55),
+              ]
+            )
           ),
         ),
         title: const Text(
@@ -124,7 +121,7 @@ class StarListState extends State<StarList>{
                 },
                 child: Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                  borderRadius: const BorderRadius.all(Radius.circular(5.0)),
                   border: Border.all(color: Colors.white)
                 ),
                 margin: const EdgeInsets.symmetric(vertical: 15),
@@ -154,6 +151,3 @@ class StarListState extends State<StarList>{
     );
   }
 }
-
-
-

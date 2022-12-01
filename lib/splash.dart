@@ -21,7 +21,7 @@ class _SplashState extends State<Splash>{
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Image.asset(
-              'assets/images/dog4.jpg',
+              'assets/images/dog4.png',
               width: 200,
             ),
             Text(

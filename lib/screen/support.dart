@@ -46,7 +46,7 @@ class SupportScreenState extends State<SupportScreen>{
                 child: Container(
                   decoration: BoxDecoration(
                     // image: DecorationImage(
-                    //   image: AssetImage("assets/images/dog.jpg")
+                    //   image: AssetImage("assets/images/dog.png")
                     // ),
                     borderRadius: BorderRadius.all(Radius.circular(5)),
                     // color: Colors.lightBlueAccent,

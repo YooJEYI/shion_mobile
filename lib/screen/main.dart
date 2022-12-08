@@ -10,11 +10,11 @@ import 'package:zion_shel/screen/notice_screen.dart';
 import 'package:zion_shel/screen/star_list.dart';
 import 'package:zion_shel/screen/support.dart';
 import 'package:zion_shel/screen/video_list.dart';
-import 'home.dart';
-import 'screen/volunteer.dart';
+import '../home.dart';
+import 'volunteer.dart';
 import 'package:mailto/mailto.dart';
 
-import 'splash.dart';
+import '../splash.dart';
 
 
 void main() {

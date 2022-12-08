@@ -7,14 +7,23 @@ class NoticeInfo {
   NoticeInfo({
     this.boardId,
     this.boardTitle,
-    this.createDate,
+    this.boardCreateDate,
     this.rnum
   });
 
-  final int? rnum;
-  final int? boardId;
+  final String? rnum;
+  final String? boardId;
   final String? boardTitle;
-  final String? createDate;
+  final String? boardCreateDate;
+
+  @override
+  String toString() {
+    return 'NoticeInfo{boardId: $boardId, boardTitle: $boardTitle, boardCreateDate: $boardCreateDate, rnum: $rnum, }';
+  }
+
+
+
+
 
   factory NoticeInfo.fromJson(Map<String, dynamic> json) => _$NoticeInfoFromJson(json);
 

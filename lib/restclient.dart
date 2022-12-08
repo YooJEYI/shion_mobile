@@ -10,7 +10,7 @@ part 'restclient.g.dart';
 abstract class RestClient {
   factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
 
-  @GET('/board')
+  @GET('/mobile/board')
   Future<List<NoticeInfo>> getNoticeList();
 
   @GET('/board/boardDetail?boardId={boardId}')

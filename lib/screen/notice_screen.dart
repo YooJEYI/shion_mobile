@@ -25,14 +25,14 @@ class _NoticeScreenState extends State<NoticeScreen> {
   @override
   void initState(){
     super.initState();
-    Dio dio = Dio();
 
+    Dio dio = Dio();
     client = RestClient(dio);
 
     Future.microtask(() async {
       final resp = await client.getNoticeList();
 
-      print(resp.toString());
+      print(resp);
     });
   }
 
@@ -48,7 +48,6 @@ class _NoticeScreenState extends State<NoticeScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
       children: [
         Flexible(
@@ -87,30 +86,23 @@ class _NoticeScreenState extends State<NoticeScreen> {
             ],
           ),
         ),
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 11, vertical: 5),
-          alignment: Alignment.topLeft,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: Colors.grey.shade400,
-              width: 1,
-            ),
-            borderRadius: BorderRadius.circular(5)
-          ),
-          child:
-
-            Container(
-            margin: EdgeInsets.only(left: 10,top: 12, bottom: 12, right: 30),
-            child :Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text("시온쉼터 와디즈 펀딩 성공 진심으로 감사 드립니다.", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xff223539)),),
-              Text("2022-11-10", style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: Color(0xff275888C)))
-            ],
-            )
-          )
-        ),
+        // Container(
+        //   margin: const EdgeInsets.symmetric(horizontal: 11, vertical: 5),
+        //   alignment: Alignment.topLeft,
+        //   width: double.infinity,
+        //   decoration: BoxDecoration(
+        //     border: Border.all(
+        //       color: Colors.grey.shade400,
+        //       width: 1,
+        //     ),
+        //     borderRadius: BorderRadius.circular(5)
+        //   ),
+        //   child:
+        //     Container(
+        //     margin: EdgeInsets.only(left: 10,top: 12, bottom: 12, right: 30),
+        //     child :
+        //   )
+        // ),
       ],
     );
   }

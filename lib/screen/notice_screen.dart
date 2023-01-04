@@ -22,6 +22,7 @@ class _NoticeScreenState extends State<NoticeScreen> {
 
   late RestClient client;
 
+
   @override
   void initState(){
     super.initState();
@@ -35,6 +36,7 @@ class _NoticeScreenState extends State<NoticeScreen> {
       print(resp);
     });
   }
+
 
   Future<void> _fetchPage(int pageKey) async {
     await Future.delayed(const Duration(milliseconds: 100));
@@ -72,37 +74,19 @@ class _NoticeScreenState extends State<NoticeScreen> {
         ),
         Container(
           margin: EdgeInsets.symmetric(horizontal: 11, vertical: 11),
-          child: Row(
-            children: [
-              Text("공지목록", style: TextStyle(color: Color(0xff23343B),fontSize: 15, fontWeight: FontWeight.bold),),
-              Expanded(
-                child: Container(
-                  margin: EdgeInsets.only(top: 13),
-                  width: double.infinity,
-                  height: 1,
-                  color: const Color(0xffD5D5D5),
-                ),
-              ),
-            ],
+          child: ListView.builder(
+              padding:const EdgeInsets.all(8),
+              itemCount: 5,
+              itemBuilder: (BuildContext context, int index){
+                return Container(
+                    height: 50,
+                    child:Center(
+                        child:Text('${client.getNoticeList()}')
+                    )
+                );
+              }
           ),
         ),
-        // Container(
-        //   margin: const EdgeInsets.symmetric(horizontal: 11, vertical: 5),
-        //   alignment: Alignment.topLeft,
-        //   width: double.infinity,
-        //   decoration: BoxDecoration(
-        //     border: Border.all(
-        //       color: Colors.grey.shade400,
-        //       width: 1,
-        //     ),
-        //     borderRadius: BorderRadius.circular(5)
-        //   ),
-        //   child:
-        //     Container(
-        //     margin: EdgeInsets.only(left: 10,top: 12, bottom: 12, right: 30),
-        //     child :
-        //   )
-        // ),
       ],
     );
   }

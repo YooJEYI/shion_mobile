@@ -21,10 +21,6 @@ class NoticeInfo {
     return 'NoticeInfo{boardId: $boardId, boardTitle: $boardTitle, boardCreateDate: $boardCreateDate, rnum: $rnum, }';
   }
 
-
-
-
-
   factory NoticeInfo.fromJson(Map<String, dynamic> json) => _$NoticeInfoFromJson(json);
 
   Map<String, dynamic> toJson() => _$NoticeInfoToJson(this);

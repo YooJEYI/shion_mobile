@@ -14,6 +14,6 @@ abstract class RestClient {
   Future<List<NoticeInfo>> getNoticeList();
 
   @GET('/board/boardDetail?boardId={boardId}')
-  Future<NoticeDetailInfo> getNoticeDetail({@Path() required String boardId});
+  Future<NoticeDetailInfo> getNoticeDetail({@Path() required int boardId});
 
 }

@@ -10,6 +10,7 @@ class StarList extends StatefulWidget {
 
 List<String> starListImage = [
   "assets/images/hj.png",
+  "assets/images/sea.png",
   "assets/images/nam.png",
   "assets/images/kimmiso.png",
   "assets/images/lee.png",
@@ -21,13 +22,13 @@ List<String> starListImage = [
   "assets/images/goean.png",
   "assets/images/yeonbok.png",
   "assets/images/hanboream.png",
-  "assets/images/song2.png",
+  "assets/images/songe.png",
   "assets/images/doyoon.png",
-  "assets/images/doong.png",
 ];
 
 List<String> starListName = [
   "전혜진",
+  "이시아",
   "남형도",
   "김미소",
   "이웅종",
@@ -40,12 +41,12 @@ List<String> starListName = [
   "이연복",
   "한보름",
   "한송이",
-  "윤도운",
-  "동글개봉사단",
+  "윤도운"
 ];
 
 List<String> starListJob = [
   "미스코리아,배우",
+  "배우",
   "머니투데이 기자",
   "아나운서",
   "원조 견통령, 대학교수",
@@ -64,6 +65,7 @@ List<String> starListJob = [
 
 List<String> instagramUrl = [
   "https://www.instagram.com/hyejin_jun/",
+  "https://www.instagram.com/exia0710/",
   "https://www.instagram.com/love_ddolggom/",
   "https://www.instagram.com/ms__4343/",
   "https://www.instagram.com/ungjongi/",

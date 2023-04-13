@@ -1,4 +1,4 @@
-package com.example.zion_shel;
+package com.zionShelApp.zion_shel;
 
 import io.flutter.embedding.android.FlutterActivity;
 

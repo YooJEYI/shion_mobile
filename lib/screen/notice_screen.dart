@@ -1,93 +1,21 @@
 
 import 'package:flutter/material.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:mysql1/mysql1.dart';
-import 'package:zion_shel/model/notice_info.dart';
-import 'package:zion_shel/model/notice_widget.dart';
-import 'package:zion_shel/restclient.dart';
-import '../common_style.dart';
-import 'package:zion_shel/provider/notice_provider.dart';
-import 'package:dio/dio.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
-class NoticeScreen extends StatefulWidget {
+class NoticeScreen extends StatelessWidget {
   const NoticeScreen({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _NoticeScreenState();
-
-}
-
-class _NoticeScreenState extends State<NoticeScreen> {
-
-  late RestClient client;
-
-
-  @override
-  void initState(){
-    super.initState();
-
-    Dio dio = Dio();
-    client = RestClient(dio);
-
-    Future.microtask(() async {
-      final resp = await client.getNoticeList();
-
-      print(resp);
-    });
-  }
-
-
-  Future<void> _fetchPage(int pageKey) async {
-    await Future.delayed(const Duration(milliseconds: 100));
-  }
-
-  @override
-  void dispose() {
-    // _pagingController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Flexible(
-          flex: 1,
-          child: TextField(
-            cursorColor: Colors.grey,
-            decoration: InputDecoration(
-                fillColor: Colors.white,
-                filled: true,
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide.none
-                ),
-                hintText: 'Search',
-                hintStyle: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 18
-                ),
-                prefixIcon: Icon(LineAwesomeIcons.search)
-            ),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.symmetric(horizontal: 11, vertical: 11),
-          child: ListView.builder(
-              padding:const EdgeInsets.all(8),
-              itemCount: 5,
-              itemBuilder: (BuildContext context, int index){
-                return Container(
-                    height: 50,
-                    child:Center(
-                        child:Text('${client.getNoticeList()}')
-                    )
-                );
-              }
-          ),
-        ),
-      ],
+    return const Scaffold(
+      body: SafeArea(
+        child: WebView(
+          initialUrl: 'https://시온쉼터.com/suda',
+          javascriptMode: JavascriptMode.unrestricted,
+          gestureNavigationEnabled: true,
+
+        )
+      ),
     );
   }
 }

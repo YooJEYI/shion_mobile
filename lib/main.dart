@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:zion_shel/screen/introduce.dart';
@@ -10,14 +11,22 @@ import 'package:zion_shel/screen/notice_screen.dart';
 import 'package:zion_shel/screen/star_list.dart';
 import 'package:zion_shel/screen/support.dart';
 import 'package:zion_shel/screen/video_list.dart';
-import '../home.dart';
-import 'volunteer.dart';
+import 'home.dart';
+import 'screen/volunteer.dart';
 import 'package:mailto/mailto.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 
-import '../splash.dart';
+import 'splash.dart';
 
 
 void main() {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  FlutterDownloader.initialize(
+      debug: true, ignoreSsl: true
+  );
+  Permission.storage.request();
+
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
@@ -138,6 +147,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsFlutterBinding.ensureInitialized();
+
+    FlutterDownloader.initialize(
+        debug: true, // optional: set to false to disable printing logs to console (default: true)
+        ignoreSsl: true // option: set to false to disable working with http links (default: false)
+    );
+
     final tel = Uri.parse('tel:01039396036');
     return WillPopScope(
       onWillPop: () => _asyncConfirmDialog(context),
@@ -171,7 +187,7 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: EdgeInsets.zero,
             children: [
               UserAccountsDrawerHeader(
-                currentAccountPicture: const CircleAvatar(backgroundImage: AssetImage('assets/images/dog1.png'),),
+                currentAccountPicture: const CircleAvatar(backgroundImage: AssetImage('assets/images/dog4.png'),),
                 accountEmail:Container(
                   margin: const EdgeInsets.only(left: 45),
                   child: TextButton(
@@ -211,11 +227,72 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
               ),
               ListTile(
-                title: const Text('시온쉼터 영상모음'),
+                title: const Text('시온쉼터 홈페이지'),
                 onTap: () async {
-                  await Navigator.push(context, MaterialPageRoute(builder: (context) => VideoList()));
+                  const url = 'https://xn--4s4bxgm4g1wp.com/';
+                  if (await launchUrl(Uri.parse(url))) {
+                    await canLaunchUrl(Uri.parse(url));
+                  } else {
+                    throw 'Could not launch $url';
+                  }
                 },
               ),
+              ListTile(
+                title: const Text('입양하기'),
+                onTap: () async {
+                  const url = 'https://docs.google.com/forms/d/e/1FAIpQLSdxtkrRJFQXNyCXTYYRRsHoBci1G_2UID2LVCYFFakgIEEejA/viewform';
+                  if (await launchUrl(Uri.parse(url))) {
+                    await canLaunchUrl(Uri.parse(url));
+                  } else {
+                    throw 'Could not launch $url';
+                  }
+                },
+              ),
+              ListTile(
+                title: const Text('시온쉼터 네이버밴드'),
+                onTap: () async {
+                  const url = 'https://band.us/band/63942980/post/11853';
+                  if (await launchUrl(Uri.parse(url))) {
+                    await canLaunchUrl(Uri.parse(url));
+                  } else {
+                    throw 'Could not launch $url';
+                  }
+                },
+              ),
+              ListTile(
+                title: const Text('시온쉼터 인스타그램'),
+                onTap: () async {
+                  const url = 'https://www.instagram.com/zion_shelter/';
+                  if (await launchUrl(Uri.parse(url))) {
+                    await canLaunchUrl(Uri.parse(url));
+                  } else {
+                    throw 'Could not launch $url';
+                  }
+                },
+              ),
+              ListTile(
+                title: const Text('대전 천사'),
+                onTap: () async {
+                  const url = 'https://pf.kakao.com/_pDYlu';
+                  if (await launchUrl(Uri.parse(url))) {
+                    await canLaunchUrl(Uri.parse(url));
+                  } else {
+                    throw 'Could not launch $url';
+                  }
+                },
+              ),
+              ListTile(
+                title: const Text('댕그라운드'),
+                onTap: () async {
+                  const url = 'https://www.instagram.com/daengground/?igshid=YmMyMTA2M2Y%3D&__coig_restricted=1';
+                  if (await launchUrl(Uri.parse(url))) {
+                    await canLaunchUrl(Uri.parse(url));
+                  } else {
+                    throw 'Could not launch $url';
+                  }
+                },
+              ),
+
             ],
           ),
         ),
@@ -239,7 +316,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           BottomNavigationBarItem(
               icon: Icon(LineAwesomeIcons.newspaper),
-              label: '공지사항',
+              label: '수다',
               backgroundColor: Colors.black
           ),
         ],

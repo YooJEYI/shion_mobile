@@ -1,4 +1,3 @@
-
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -34,17 +33,14 @@ class YoutubePlayerDemoApp extends StatelessWidget {
   }
 }
 
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() =>_HomeScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-
-class _HomeScreenState extends State<HomeScreen>{
-
+class _HomeScreenState extends State<HomeScreen> {
   late YoutubePlayerController _controller;
   late TextEditingController _idController;
   late TextEditingController _seekToController;
@@ -188,9 +184,9 @@ class _HomeScreenState extends State<HomeScreen>{
                           icon: const Icon(Icons.skip_previous),
                           onPressed: _isPlayerReady
                               ? () => _controller.load(_ids[
-                          (_ids.indexOf(_controller.metadata.videoId) -
-                              1) %
-                              _ids.length])
+                                  (_ids.indexOf(_controller.metadata.videoId) -
+                                          1) %
+                                      _ids.length])
                               : null,
                         ),
                         IconButton(
@@ -201,24 +197,25 @@ class _HomeScreenState extends State<HomeScreen>{
                           ),
                           onPressed: _isPlayerReady
                               ? () {
-                            _controller.value.isPlaying
-                                ? _controller.pause()
-                                : _controller.play();
-                            setState(() {});
-                          }
+                                  _controller.value.isPlaying
+                                      ? _controller.pause()
+                                      : _controller.play();
+                                  setState(() {});
+                                }
                               : null,
                         ),
                         IconButton(
-                          icon: Icon(_muted ? Icons.volume_off : Icons.volume_up),
+                          icon:
+                              Icon(_muted ? Icons.volume_off : Icons.volume_up),
                           onPressed: _isPlayerReady
                               ? () {
-                            _muted
-                                ? _controller.unMute()
-                                : _controller.mute();
-                            setState(() {
-                              _muted = !_muted;
-                            });
-                          }
+                                  _muted
+                                      ? _controller.unMute()
+                                      : _controller.mute();
+                                  setState(() {
+                                    _muted = !_muted;
+                                  });
+                                }
                               : null,
                         ),
                         FullScreenButton(
@@ -229,9 +226,9 @@ class _HomeScreenState extends State<HomeScreen>{
                           icon: const Icon(Icons.skip_next),
                           onPressed: _isPlayerReady
                               ? () => _controller.load(_ids[
-                          (_ids.indexOf(_controller.metadata.videoId) +
-                              1) %
-                              _ids.length])
+                                  (_ids.indexOf(_controller.metadata.videoId) +
+                                          1) %
+                                      _ids.length])
                               : null,
                         ),
                       ],
@@ -253,11 +250,11 @@ class _HomeScreenState extends State<HomeScreen>{
                             label: '${(_volume).round()}',
                             onChanged: _isPlayerReady
                                 ? (value) {
-                              setState(() {
-                                _volume = value;
-                              });
-                              _controller.setVolume(_volume.round());
-                            }
+                                    setState(() {
+                                      _volume = value;
+                                    });
+                                    _controller.setVolume(_volume.round());
+                                  }
                                 : null,
                           ),
                         ),
@@ -323,18 +320,18 @@ class _HomeScreenState extends State<HomeScreen>{
         color: Colors.blueAccent,
         onPressed: _isPlayerReady
             ? () {
-          if (_idController.text.isNotEmpty) {
-            var id = YoutubePlayer.convertUrlToId(
-              _idController.text,
-            ) ??
-                '';
-            if (action == 'LOAD') _controller.load(id);
-            if (action == 'CUE') _controller.cue(id);
-            FocusScope.of(context).requestFocus(FocusNode());
-          } else {
-            _showSnackBar('Source can\'t be empty!');
-          }
-        }
+                if (_idController.text.isNotEmpty) {
+                  var id = YoutubePlayer.convertUrlToId(
+                        _idController.text,
+                      ) ??
+                      '';
+                  if (action == 'LOAD') _controller.load(id);
+                  if (action == 'CUE') _controller.cue(id);
+                  FocusScope.of(context).requestFocus(FocusNode());
+                } else {
+                  _showSnackBar('Source can\'t be empty!');
+                }
+              }
             : null,
         disabledColor: Colors.grey,
         disabledTextColor: Colors.black,
@@ -374,7 +371,4 @@ class _HomeScreenState extends State<HomeScreen>{
       ),
     );
   }
-
-
-
 }
